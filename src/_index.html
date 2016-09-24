@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="format-detection" content="telephone=no,address=no,email=no">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title> index </title>
+</head>
+<body>
+    <script src="js/index.js" charset="utf-8"></script>
+    <script src="js/micro-definition.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        define('mod-a@1.0.0', function () {
+            console.log('i am mod-a@1.0.0');
+            return 'mod-a';
+        });
+    </script>
+    <script type="text/javascript">
+        define('mod-a@1.0.1', ['mod-b', 'mod-c'], function ( b,c ) {
+            console.log('i am mod-a@1.0.1');
+            return 'mod-aaaa,' + b + ',' + c;
+        });
+    </script>
+    <script type="text/javascript">
+        define.alias({
+            'mod-b' : './js/mod-b.js',
+            'mod-c' : './js/mod-c.js',
+        });
+        function test1 () {
+            define.alias({
+                'mod-a' : function () {
+                    return 'mod-a@1.0.0';
+                }
+            });
+            define(['mod-a'], function () {
+                console.log(arguments);
+            });
+        }
+        function test2 () {
+            define.alias({
+                'mod-a' : function () {
+                    return 'mod-a@1.0.1';
+                }
+            });
+            define(['mod-a'], function () {
+                console.log(arguments);
+            });
+        }
+    </script>
+</body>
+</html>
