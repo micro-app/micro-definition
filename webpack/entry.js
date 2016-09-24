@@ -1,0 +1,1 @@
+module.exports = {"index":"/Users/lixinliang/GitHub/micro-definition/src/entry/index.js","micro-definition":"/Users/lixinliang/GitHub/micro-definition/src/entry/micro-definition.js"}
