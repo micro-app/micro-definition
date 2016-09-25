@@ -42,7 +42,7 @@
     "fs-extra": "^0.30.0",
     "inline-source": "^5.0.0",
     "jquery": "^3.0.0",
-    "micro-storage": "0.0.7",
+    "micro-storage": "0.0.8",
     "minifycss-loader": "^0.2.0",
     "moment": "~2.8.3",
     "node-sass": "^3.7.0",

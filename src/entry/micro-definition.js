@@ -3,7 +3,6 @@
  * @type {Object} storage
  */
 let storage = microStorage('@NAME');
-let record = microStorage('@NAME-record');
 
 let alias = {};
 let cache = {};
@@ -16,6 +15,11 @@ let loading = {};
 function throwError ( message ) {
     throw new TypeError(`@NAME: ${ message }`);
 }
+
+/**
+ * noop
+ */
+function noop () {}
 
 /**
  * Resolve the dependency of module
@@ -52,7 +56,7 @@ function resolve ( dependency, method, callback ) {
             } else {
                 let result = storage(id);
                 if (result) {
-                    loadModule(result, id, index, function () {});
+                    loadModule(result, id, index, noop);
                 } else {
                     if (alias[id]) {
                         if (loading[id]) {
@@ -76,7 +80,7 @@ function resolve ( dependency, method, callback ) {
                             document.head.appendChild(script);
                         }
                     } else {
-                        cache[id] = args[index] = void 0;
+                        args[index] = cache[id] = void 0;
                         done();
                     }
                 }
@@ -119,11 +123,8 @@ function define ( id, dependency, method ) {
             timestamp : +new Date,
             content : method.toString(),
         });
-        let modules = record('modules') || {};
-        modules[id] = '';
-        record('modules', modules);
     } else {
-        resolve(dependency, method, function () {});
+        resolve(dependency, method, noop);
     }
 }
 
@@ -137,19 +138,7 @@ define.alias = function ( config ) {
     }
 };
 
-/**
- * Return all modules list
- * @return {Object} list all modules list
- */
-define.list = function () {
-    let detail = {};
-    let modules = record('modules') || {};
-    for (let module in modules) {
-        detail[module] = storage(module);
-    }
-    return detail;
-};
-
 define.version = '@VERSION';
+define.storage = storage;
 
 window.define = define;
