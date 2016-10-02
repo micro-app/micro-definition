@@ -1,4 +1,10 @@
 /**
+ * @webpack
+ * @library
+ * @libraryTarget var
+ */
+
+/**
  * Dependency microStorage @see https://www.npmjs.com/package/micro-storage
  * @type {Object} storage
  */
@@ -10,7 +16,7 @@ let loading = {};
 
 /**
  * Throw error
- * @param  {String} message throw error
+ * @param {String} message throw error
  */
 function throwError ( message ) {
     throw new TypeError(`@NAME: ${ message }`);
@@ -23,9 +29,9 @@ function noop () {}
 
 /**
  * Resolve the dependency of module
- * @param  {Array} dependency dependency of module
- * @param  {Function} method content of module
- * @param  {Function} callback pass the return value of the method
+ * @param {Array} dependency dependency of module
+ * @param {Function} method content of module
+ * @param {Function} callback pass the return value of the method
  */
 function resolve ( dependency, method, callback ) {
     let length = dependency.length;
@@ -93,9 +99,9 @@ function resolve ( dependency, method, callback ) {
 
 /**
  * define a module by name or invoke an anonymous function and pass the dependency as arguments
- * @param  {String} id unique name of module
- * @param  {Array} dependency dependency of module
- * @param  {Function} method method
+ * @param {String} id unique name of module
+ * @param {Array} dependency dependency of module
+ * @param {Function} method method
  */
 function define ( id, dependency, method ) {
     if (arguments.length < 2) {
@@ -130,7 +136,7 @@ function define ( id, dependency, method ) {
 
 /**
  * Set alias to each module
- * @param  {Object} config module-id : module-path
+ * @param {Object} config module-id : module-path
  */
 define.alias = function ( config ) {
     for (let id in config) {
