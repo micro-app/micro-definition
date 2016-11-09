@@ -1,7 +1,7 @@
 {
   "name": "micro-definition",
   "version": "0.0.3",
-  "description": "(<2kb) A lite module definition tool.",
+  "description": "(<2kb) A lite module loader and cache module in localStorage.",
   "main": "dist/micro-definition.min.js",
   "scripts": {
     "dev": "node ./webpack/webpack.node.js -dev",

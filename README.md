@@ -1,5 +1,9 @@
+[![npm](https://img.shields.io/npm/l/micro-definition.svg?style=flat-square)](https://www.npmjs.org/package/micro-definition)
+[![npm](https://img.shields.io/npm/v/micro-definition.svg?style=flat-square)](https://www.npmjs.org/package/micro-definition)
+[![npm](https://img.shields.io/npm/dm/micro-definition.svg?style=flat-square)](https://www.npmjs.org/package/micro-definition)
+
 # micro-definition
-> (<2kb) A lite module definition tool.
+> (<2kb) A lite module loader and cache module in localStorage.
 
 ## Try it now
 
@@ -10,11 +14,15 @@
 $ npm install micro-definition
 ```
 
+## Dependency
+
+* [micro-storage](https://github.com/micro-app/micro-storage)
+
 ## How to use
 
 #### Define a module
 define(String: id, Function: method);
-```
+```javascript
 define('mod', function () {
     // some code;
     return value;
@@ -23,7 +31,7 @@ define('mod', function () {
 
 #### Define a module with dependencies
 define(String: id, Array: Dependency, Function: method);
-```
+```javascript
 define('mod-a', ['mod-b', 'mod-c'], function ( b, c ) {
     // some code;
     return value;
@@ -32,27 +40,27 @@ define('mod-a', ['mod-b', 'mod-c'], function ( b, c ) {
 
 #### Use modules
 define(Array: Dependency, Function: method);
-````
+````javascript
 define(['jQuery', 'lodash'], function ( $, _ ) {
     // some code;
 });
 ````
 
 #### Config of alias
-````
+````javascript
 define.alias({
     'mod-a' : 'a.js',
     'mod-b' : 'b.js',
 });
 ````
 
-#### Show definitional modules
-````
+#### Show all defined modules
+````javascript
 define.storage.list();
 ````
 
-#### Remove a definitional module
-````
+#### Remove a defined module
+````javascript
 define.storage.remove('mod-a');
 ````
 

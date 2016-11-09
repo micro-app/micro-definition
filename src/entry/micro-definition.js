@@ -53,19 +53,24 @@ function resolve ( dependency, method, callback ) {
             });
         }
         dependency.forEach(function ( id, index ) {
+            // alias redirect
             if (typeof alias[id] == 'function') {
                 id = alias[id].call(alias);
             }
+            // get from cache
             if (cache[id]) {
                 args[index] = cache[id];
                 done();
             } else {
+                // get from storage
                 let result = storage(id);
                 if (result) {
                     loadModule(result, id, index, noop);
                 } else {
+                    // get from network
                     if (alias[id]) {
                         if (loading[id]) {
+                            // push in queue when loading
                             loading[id].push(function () {
                                 args[index] = cache[id];
                                 done();
@@ -86,6 +91,7 @@ function resolve ( dependency, method, callback ) {
                             document.head.appendChild(script);
                         }
                     } else {
+                        // not exist then skip
                         args[index] = cache[id] = void 0;
                         done();
                     }
