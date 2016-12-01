@@ -21,34 +21,34 @@ $ npm install micro-definition
 ## How to use
 
 #### Define a module
-define(String: id, Function: method);
+Define(String: id, Function: method);
 ```javascript
-define('mod', function () {
+Define('mod', function () {
     // some code;
     return value;
 });
 ```
 
 #### Define a module with dependencies
-define(String: id, Array: Dependency, Function: method);
+Define(String: id, Array: Dependency, Function: method);
 ```javascript
-define('mod-a', ['mod-b', 'mod-c'], function ( b, c ) {
+Define('mod-a', ['mod-b', 'mod-c'], function ( b, c ) {
     // some code;
     return value;
 });
 ```
 
 #### Use modules
-define(Array: Dependency, Function: method);
+Define(Array: Dependency, Function: method);
 ````javascript
-define(['jQuery', 'lodash'], function ( $, _ ) {
+Define(['jQuery', 'lodash'], function ( $, _ ) {
     // some code;
 });
 ````
 
 #### Config of alias
 ````javascript
-define.alias({
+Define.alias({
     'mod-a' : 'a.js',
     'mod-b' : 'b.js',
 });
@@ -56,12 +56,12 @@ define.alias({
 
 #### Show all defined modules
 ````javascript
-define.storage.list();
+Define.storage.list();
 ````
 
 #### Remove a defined module
 ````javascript
-define.storage.remove('mod-a');
+Define.storage.remove('mod-a');
 ````
 
 ## License
