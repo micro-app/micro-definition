@@ -14,39 +14,39 @@
     <script src="js/index.js" charset="utf-8"></script>
     <script src="js/micro-definition.js" charset="utf-8"></script>
     <script type="text/javascript">
-        define('mod-a@1.0.0', function () {
+        Define('mod-a@1.0.0', function () {
             console.log('i am mod-a@1.0.0');
             return 'mod-a';
         });
     </script>
     <script type="text/javascript">
-        define('mod-a@1.0.1', ['mod-b', 'mod-c'], function ( b,c ) {
+        Define('mod-a@1.0.1', ['mod-b', 'mod-c'], function ( b,c ) {
             console.log('i am mod-a@1.0.1');
             return 'mod-aaaa,' + b + ',' + c;
         });
     </script>
     <script type="text/javascript">
-        define.alias({
+        Define.alias({
             'mod-b' : './js/mod-b.js',
             'mod-c' : './js/mod-c.js',
         });
         function test1 () {
-            define.alias({
+            Define.alias({
                 'mod-a' : function () {
                     return 'mod-a@1.0.0';
                 }
             });
-            define(['mod-a'], function () {
+            Define(['mod-a'], function () {
                 console.log(arguments);
             });
         }
         function test2 () {
-            define.alias({
+            Define.alias({
                 'mod-a' : function () {
                     return 'mod-a@1.0.1';
                 }
             });
-            define(['mod-a'], function () {
+            Define(['mod-a'], function () {
                 console.log(arguments);
             });
         }

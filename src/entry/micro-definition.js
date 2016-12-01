@@ -44,13 +44,19 @@ function resolve ( dependency, method, callback ) {
             }
         }
         function loadModule ( result, id, index, callback ) {
-            let { dependency, content } = result;
-            let method = new Function('return ' + content)();
-            resolve(dependency, method, function ( value ) {
-                cache[id] = args[index] = value;
+            if (result) {
+                let { dependency, content } = result;
+                let method = new Function('return ' + content)();
+                resolve(dependency, method, function ( value ) {
+                    cache[id] = args[index] = value;
+                    done();
+                    callback();
+                });
+            } else {
+                cache[id] = args[index] = new SyntaxError(`@NAME: "${ id }" is not defined`);
                 done();
                 callback();
-            });
+            }
         }
         dependency.forEach(function ( id, index ) {
             // alias redirect
@@ -109,7 +115,7 @@ function resolve ( dependency, method, callback ) {
  * @param {Array} dependency dependency of module
  * @param {Function} method method
  */
-function define ( id, dependency, method ) {
+function Define ( id, dependency, method ) {
     if (arguments.length < 2) {
         throwError('2 arguments required at least.');
     }
@@ -127,7 +133,7 @@ function define ( id, dependency, method ) {
         dependency = [];
     }
     if (typeof method != 'function') {
-        throwError('Module should be a function.')
+        throwError('Module should be a function.');
     }
     if (id) {
         storage(id, {
@@ -144,13 +150,13 @@ function define ( id, dependency, method ) {
  * Set alias to each module
  * @param {Object} config module-id : module-path
  */
-define.alias = function ( config ) {
+Define.alias = function ( config ) {
     for (let id in config) {
         alias[id] = config[id];
     }
 };
 
-define.version = '@VERSION';
-define.storage = storage;
+Define.version = '@VERSION';
+Define.storage = storage;
 
-window.define = define;
+window.Define = Define;

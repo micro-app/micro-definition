@@ -1,4 +1,4 @@
-define('mod-c', function () {
+Define('mod-c', function () {
     console.log('i am mod-c');
     return 'mod-c';
 });
