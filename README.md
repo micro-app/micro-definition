@@ -20,49 +20,58 @@ $ npm install micro-definition
 
 ## How to use
 
-#### Define a module
-Define(String: id, Function: method);
-```javascript
+#### #Define a module
+> Define( id : String, method : Function )
+
+```js
 Define('mod', function () {
     // some code;
     return value;
 });
 ```
 
-#### Define a module with dependencies
-Define(String: id, Array: Dependency, Function: method);
-```javascript
+#### #Define a module with dependencies
+> Define( id : String, dependency : Array, method : Function )
+
+```js
 Define('mod-a', ['mod-b', 'mod-c'], function ( b, c ) {
     // some code;
     return value;
 });
 ```
 
-#### Use modules
-Define(Array: Dependency, Function: method);
-````javascript
+#### #Require modules
+> Define( dependency : Array, callback : Function )
+
+```js
 Define(['jQuery', 'lodash'], function ( $, _ ) {
     // some code;
 });
-````
+```
 
-#### Config of alias
-````javascript
+#### #Config of alias
+> Define.alias( alias : Object )
+
+```js
 Define.alias({
     'mod-a' : 'a.js',
     'mod-b' : 'b.js',
 });
-````
+```
 
-#### Show all defined modules
-````javascript
+#### #Show all defined modules
+More `Define.storage` api see [micro-storage](https://github.com/micro-app/micro-storage).
+
+```js
 Define.storage.list();
-````
+```
 
-#### Remove a defined module
-````javascript
+#### #Remove a defined module
+More `Define.storage` api see [micro-storage](https://github.com/micro-app/micro-storage).
+
+```js
 Define.storage.remove('mod-a');
-````
+```
 
 ## License
 
