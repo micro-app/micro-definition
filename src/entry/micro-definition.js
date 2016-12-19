@@ -8,7 +8,7 @@
  * Dependency microStorage @see https://www.npmjs.com/package/micro-storage
  * @type {Object} storage
  */
-let storage = microStorage('@NAME');
+let storage = microStorage(process.env.NAME);
 
 let alias = {};
 let cache = {};
@@ -19,7 +19,7 @@ let loading = {};
  * @param {String} message throw error
  */
 function throwError ( message ) {
-    throw new TypeError(`@NAME: ${ message }`);
+    throw new TypeError(`${ process.env.NAME }: ${ message }`);
 }
 
 /**
@@ -156,7 +156,7 @@ Define.alias = function ( config ) {
     }
 };
 
-Define.version = '@VERSION';
+Define.version = process.env.VERSION;
 Define.storage = storage;
 
 window.Define = Define;

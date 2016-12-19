@@ -2,7 +2,7 @@
  * @ProjectName micro-definition
  * @Version 0.0.4
  * @Author lixinliang(https://github.com/lixinliang)
- * @Update 2016-11-30 2:05:23 pm
+ * @Update 2016-12-19 10:34:15 am
  */
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -48,7 +48,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -62,7 +62,7 @@
 	 * Dependency microStorage @see https://www.npmjs.com/package/micro-storage
 	 * @type {Object} storage
 	 */
-	var storage = microStorage('micro-definition');
+	var storage = microStorage(("micro-definition"));
 
 	var alias = {};
 	var cache = {};
@@ -73,7 +73,7 @@
 	 * @param {String} message throw error
 	 */
 	function throwError(message) {
-	    throw new TypeError('micro-definition: ' + message);
+	    throw new TypeError(("micro-definition") + ': ' + message);
 	}
 
 	/**
@@ -100,8 +100,8 @@
 
 	            var loadModule = function loadModule(result, id, index, callback) {
 	                if (result) {
-	                    var _dependency = result.dependency;
-	                    var content = result.content;
+	                    var _dependency = result.dependency,
+	                        content = result.content;
 
 	                    var _method = new Function('return ' + content)();
 	                    resolve(_dependency, _method, function (value) {
@@ -110,7 +110,7 @@
 	                        callback();
 	                    });
 	                } else {
-	                    cache[id] = args[index] = new SyntaxError('micro-definition: "' + id + '" is not defined');
+	                    cache[id] = args[index] = new SyntaxError('@NAME: "' + id + '" is not defined');
 	                    done();
 	                    callback();
 	                }
@@ -219,7 +219,7 @@
 	    }
 	};
 
-	Define.version = '0.0.4';
+	Define.version = ("0.0.4");
 	Define.storage = storage;
 
 	window.Define = Define;
