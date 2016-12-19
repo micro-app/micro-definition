@@ -1,6 +1,7 @@
 [![npm](https://img.shields.io/npm/l/micro-definition.svg?style=flat-square)](https://www.npmjs.org/package/micro-definition)
 [![npm](https://img.shields.io/npm/v/micro-definition.svg?style=flat-square)](https://www.npmjs.org/package/micro-definition)
 [![npm](https://img.shields.io/npm/dm/micro-definition.svg?style=flat-square)](https://www.npmjs.org/package/micro-definition)
+[![bitHound Code](https://www.bithound.io/github/micro-app/micro-definition/badges/code.svg)](https://www.bithound.io/github/micro-app/micro-definition)
 
 # micro-definition
 > (<2kb) A lite module loader and cache module in localStorage.
