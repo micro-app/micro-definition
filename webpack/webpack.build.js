@@ -169,7 +169,7 @@ if (process.argv.build == 'js') {
                 }
             }
             result.push({
-                form : file,
+                from : file,
                 to : filename,
             });
         });
