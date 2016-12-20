@@ -53,7 +53,7 @@ function resolve ( dependency, method, callback ) {
                     callback();
                 });
             } else {
-                cache[id] = args[index] = new SyntaxError(`@NAME: "${ id }" is not defined`);
+                cache[id] = args[index] = new SyntaxError(`${ process.env.NAME }: "${ id }" is not defined`);
                 done();
                 callback();
             }
