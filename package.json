@@ -1,6 +1,6 @@
 {
   "name": "micro-definition",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "(<2kb) A lite module loader and cache module in localStorage.",
   "main": "dist/micro-definition.min.js",
   "scripts": {

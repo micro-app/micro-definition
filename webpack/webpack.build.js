@@ -133,6 +133,7 @@ if (process.argv.build == 'js') {
                 comments : false,
             },
         }));
+    } else {
         plugins.unshift(new CleanWebpackPlugin(['dist'], {
             root : path.join(__dirname, '..'),
         }));

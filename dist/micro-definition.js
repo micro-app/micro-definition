@@ -1,8 +1,8 @@
 /*!
  * @ProjectName micro-definition
- * @Version 0.0.4
+ * @Version 0.0.5
  * @Author lixinliang(https://github.com/lixinliang)
- * @Update 2016-12-19 10:34:15 am
+ * @Update 2016-12-20 10:42:34 am
  */
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -110,7 +110,7 @@
 	                        callback();
 	                    });
 	                } else {
-	                    cache[id] = args[index] = new SyntaxError('@NAME: "' + id + '" is not defined');
+	                    cache[id] = args[index] = new SyntaxError(("micro-definition") + ': "' + id + '" is not defined');
 	                    done();
 	                    callback();
 	                }
@@ -219,7 +219,7 @@
 	    }
 	};
 
-	Define.version = ("0.0.4");
+	Define.version = ("0.0.5");
 	Define.storage = storage;
 
 	window.Define = Define;
