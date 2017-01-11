@@ -12,7 +12,7 @@
 
 ## Getting started
 ```
-$ npm install micro-definition
+$ npm install --save-dev micro-definition
 ```
 
 ## Dependency
